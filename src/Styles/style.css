@@ -1,9 +1,25 @@
+@font-face {
+  font-family: "logo-font";
+  src: url("../Fonts/SunnySpellsBasicRegular-Yz1Wv.ttf");
+}
 body {
   background-color: #c9d9c2;
   min-width: 100vw;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+body .header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 12px 20px;
+  background-color: #1b494b;
+  color: white;
+  gap: 12px;
+  z-index: 2;
+  font-size: calc(1.8vw + 1.8vh);
+  font-family: logo-font;
 }
 body .footer {
   width: 100vw;
@@ -31,4 +47,11 @@ body .footer .text a img {
 }
 body .footer .text a img:hover {
   transform: scale(1.2);
+}
+@media screen and (orientation: portrait) {
+  body .header {
+    justify-content: center;
+    font-size: xx-large;
+    gap: 6px;
+  }
 }/*# sourceMappingURL=style.css.map */
