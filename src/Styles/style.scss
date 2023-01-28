@@ -25,6 +25,11 @@ body {
         font-family: logo-font;
     }
 
+    .main {
+        min-width: 100vw;
+        min-height: calc(100vh - (124px + 5vh));
+    }
+
     .footer {
         width: 100vw;
         height: 5vh;
@@ -32,9 +37,11 @@ body {
         align-items: center;
         justify-content: center;
         margin-top: auto;
+        background-color: $main-color;
+        z-index: 2;
     
         .text {
-          color: black;
+          color: white;
           font-size: calc(0.8vw + 0.8vh);
           font-weight: 200;
     

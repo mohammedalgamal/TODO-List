@@ -1,8 +1,9 @@
-import gitHubImg from "./Images/GitHub-Mark-32px.png";
+import gitHubImg from "./Images/GitHub-Mark-Light-32px.png";
 
 export default function makeFooter() {
     const footer = document.createElement("div");
     footer.className = "footer";
+    footer.classList.add("shadow-lg");
 
     const footerText = document.createElement("div");
     footerText.className = "text";
