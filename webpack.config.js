@@ -6,6 +6,8 @@ module.exports = {
   mode: "development",
   entry: {
     index: "./src/index.js",
+    header: "./src/header.js",
+    footer: "./src/footer.js"
   },
   plugins: [
     new HtmlWebpackPlugin({
