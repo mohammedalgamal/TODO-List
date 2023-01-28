@@ -1,0 +1,41 @@
+@import "./config";
+
+body {
+    background-color: $third-color;
+    min-width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+    .footer {
+        width: 100vw;
+        height: 5vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: auto;
+    
+        .text {
+          color: black;
+          font-size: calc(0.8vw + 0.8vh);
+          font-weight: 200;
+    
+          @media (max-width: 333px) {
+            font-size: 15px;
+          }
+    
+          a {
+            img {
+              height: calc(0.9vw + 0.9vh);
+              margin-bottom: 5px;
+              margin-left: 8px;
+              width: auto;
+            }
+    
+            img:hover {
+              transform: scale(1.2);
+            }
+          }
+        }
+      }
+}
