@@ -25,6 +25,11 @@ body .main {
   min-width: 100vw;
   min-height: calc(100vh - (124px + 5vh));
 }
+body .main .navBar {
+  width: 20%;
+  height: calc(100vh - (124px + 5vh));
+  background-color: #99aa92;
+}
 body .footer {
   width: 100vw;
   height: 5vh;
@@ -59,5 +64,9 @@ body .footer .text a img:hover {
     justify-content: center;
     font-size: xx-large;
     gap: 6px;
+  }
+  body .main .navBar {
+    width: 100%;
+    height: 10rem;
   }
 }/*# sourceMappingURL=style.css.map */
