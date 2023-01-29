@@ -18,3 +18,11 @@ makeHeader();
 makeMainSection();
 makeNavBar();
 makeFooter();
+
+const navBar = document.querySelector(".navBar");
+const menuBtn = document.querySelector(".showMore");
+
+menuBtn.addEventListener("click", () => {
+    menuBtn.classList.toggle("active");
+    navBar.classList.toggle("hide");
+});

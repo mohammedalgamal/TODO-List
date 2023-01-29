@@ -12,10 +12,6 @@ body {
     display: flex;
     flex-direction: column;
 
-    .hide {
-      display: none;
-    }
-
     .header {
         display: flex;
         justify-content: flex-start;
@@ -27,6 +23,31 @@ body {
         z-index: 2;
         font-size: calc(1.8vw + 1.8vh);
         font-family: logo-font;
+
+        .showMore {
+          position: absolute;
+          right: 0.4rem;
+          width: 50px;
+          height: 50px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          img {
+            width: 25px;
+            height: auto;
+          }
+        }
+
+        .showMore:hover,
+        .active {
+          background-color: #0c2021;
+          border-radius: 8px;
+        }
+
+        .showMore.hideLandscape {
+          display: none;
+        }
     }
 
     .main {
@@ -120,20 +141,31 @@ body {
       }
 
     @media screen and (orientation:portrait) {
-        .header {
-            justify-content: center;
-            font-size: xx-large;
-            gap: 6px;
-        }
+      
+      .header {
+          justify-content: center;
+          font-size: xx-large;
+          gap: 6px;
 
-        .main {
-            .navBar {
-                width: 100%;
-                min-height: 10rem;
-                flex-direction: row;
-                gap: 26px;
-                justify-content: space-evenly;
-            }
-        }
+          .showMore.hideLandscape {
+            display: flex;
+          }
+      }
+
+      .main {
+          .navBar {
+              width: 100%;
+              min-height: 10rem;
+              flex-direction: row;
+              gap: 26px;
+              justify-content: space-evenly;
+              transform: translateY(-305px);
+              transition: transform .3s ease;
+          }
+
+          .navBar.hide {
+            transform: translateY(0);
+          }
+      }
     }
 }

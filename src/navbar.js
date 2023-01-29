@@ -1,22 +1,23 @@
-import tasksIcon from "./Images/icons8-todo-list-64.png";
 import todayIcon from "./Images/icons8-calendar-1-100.png";
 import weekIcon from "./Images/icons8-calendar-7-100.png";
 import allTasksIcon from "./Images/icons8-tasklist-100.png";
-import projectsIcon from "./Images/icons8-group-of-projects-100.png";
 import oneProjectIcon from "./Images/icons8-check-64.png";
 import plusIcon from "./Images/icons8-plus-100.png";
 
 function makeElement(text, className, img, imgClass) {
-    const element = document.createElement("dive");
+    const element = document.createElement("div");
     element.classList.add(className);
     element.classList.add("item");
 
-    const elementImg = document.createElement("img");
-    elementImg.src = img;
-    elementImg.alt = "img";
-    elementImg.classList.add(imgClass);
+    if (img) {
+        const elementImg = document.createElement("img");
+        elementImg.src = img;
+        elementImg.alt = "img";
+        elementImg.classList.add(imgClass);
 
-    element.appendChild(elementImg);
+        element.appendChild(elementImg);
+    };
+
     element.innerHTML += text;
 
     return element;
@@ -49,12 +50,12 @@ export default function makeNavBar() {
     const tasksDiv = tasksDivList[0];
     const projectsDiv = projectsDivList[0];
 
-    tasksDivList[1].appendChild(makeElement("Tasks", "tasksLabel", tasksIcon, "tasksIcon"));
+    tasksDivList[1].appendChild(makeElement("Tasks", "tasksLabel"));
+    tasksDivList[2].appendChild(makeElement("All tasks", "allTasks", allTasksIcon, "allTasksIcon"));
     tasksDivList[2].appendChild(makeElement("Today", "today", todayIcon, "todayIcon"));
     tasksDivList[2].appendChild(makeElement("This week", "week", weekIcon, "weekIcon"));
-    tasksDivList[2].appendChild(makeElement("All tasks", "allTasks", allTasksIcon, "allTasksIcon"));
 
-    projectsDivList[1].appendChild(makeElement("Projects", "projectsLabel", projectsIcon, "projectsIcon"));
+    projectsDivList[1].appendChild(makeElement("Projects", "projectsLabel"));
     projectsDivList[2].appendChild(makeElement("Test", "project", oneProjectIcon, "oneProjectsIcon"));
     projectsDivList[2].appendChild(makeElement("Add project", "addProject", plusIcon, "plusIcon"));
 

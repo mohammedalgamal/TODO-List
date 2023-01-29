@@ -9,9 +9,6 @@ body {
   display: flex;
   flex-direction: column;
 }
-body .hide {
-  display: none;
-}
 body .header {
   display: flex;
   justify-content: flex-start;
@@ -23,6 +20,27 @@ body .header {
   z-index: 2;
   font-size: calc(1.8vw + 1.8vh);
   font-family: logo-font;
+}
+body .header .showMore {
+  position: absolute;
+  right: 0.4rem;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body .header .showMore img {
+  width: 25px;
+  height: auto;
+}
+body .header .showMore:hover,
+body .header .active {
+  background-color: #0c2021;
+  border-radius: 8px;
+}
+body .header .showMore.hideLandscape {
+  display: none;
 }
 body .main {
   min-width: 100vw;
@@ -116,11 +134,19 @@ body .footer .text a img:hover {
     font-size: xx-large;
     gap: 6px;
   }
+  body .header .showMore.hideLandscape {
+    display: flex;
+  }
   body .main .navBar {
     width: 100%;
     min-height: 10rem;
     flex-direction: row;
     gap: 26px;
     justify-content: space-evenly;
+    transform: translateY(-305px);
+    transition: transform 0.3s ease;
+  }
+  body .main .navBar.hide {
+    transform: translateY(0);
   }
 }/*# sourceMappingURL=style.css.map */
