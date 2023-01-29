@@ -1,3 +1,5 @@
+// All icons are by https://icons8.com/
+
 import "bootstrap/dist/css/bootstrap.css";
 import "./Styles/style.css";
 import logo from "./Images/icons8-todo-list-100.png";
