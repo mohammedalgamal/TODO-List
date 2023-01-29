@@ -9,6 +9,7 @@ import plusIcon from "./Images/icons8-plus-100.png";
 function makeElement(text, className, img, imgClass) {
     const element = document.createElement("dive");
     element.classList.add(className);
+    element.classList.add("item");
 
     const elementImg = document.createElement("img");
     elementImg.src = img;
