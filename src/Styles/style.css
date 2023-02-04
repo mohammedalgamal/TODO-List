@@ -54,6 +54,7 @@ body .header .showMore.hideLandscape {
 body .main {
   min-width: 100vw;
   min-height: calc(100vh - (124px + 5vh));
+  display: flex;
 }
 body .main .navBar {
   width: 16vw;
@@ -63,6 +64,7 @@ body .main .navBar {
   flex-direction: column;
   gap: 16px;
   padding: 48px 16px;
+  z-index: 1;
 }
 body .main .navBar .item {
   display: flex;
@@ -107,6 +109,11 @@ body .main .navBar .projects .tasksLower .item:hover,
 body .main .navBar .projects .projectsLower .item:hover {
   background-color: #71816a;
   border-radius: 8px;
+}
+body .main .content {
+  width: 84vw;
+  height: calc(100vh - (124px + 5vh));
+  z-index: -2;
 }
 body .footer {
   width: 100vw;
@@ -197,16 +204,22 @@ body .form.visible {
   body .header .showMore.hideLandscape {
     display: flex;
   }
+  body .main {
+    flex-direction: column;
+  }
   body .main .navBar {
     width: 100%;
     min-height: 10rem;
     flex-direction: row;
     gap: 26px;
     justify-content: space-evenly;
-    transform: translateY(-305px);
+    transform: translateY(-1500px);
     transition: transform 0.3s ease;
   }
-  body .main .navBar.hide {
+  body .main .navBar.show {
     transform: translateY(0);
+  }
+  body .main .content {
+    width: 100vw;
   }
 }/*# sourceMappingURL=style.css.map */

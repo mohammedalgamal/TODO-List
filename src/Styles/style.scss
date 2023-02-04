@@ -63,6 +63,7 @@ body {
     .main {
         min-width: 100vw;
         min-height: calc(100vh - (124px + 5vh));
+        display: flex;
 
         .navBar {
             width: 16vw;
@@ -72,6 +73,7 @@ body {
             flex-direction: column;
             gap: 16px;
             padding: 48px 16px;
+            z-index: 1;
 
             .item {
               display: flex;
@@ -113,6 +115,12 @@ body {
                 }
               }
           }
+        }
+
+        .content {
+          width: 84vw;
+          height: calc(100vh - (124px + 5vh)); 
+          z-index: -2;
         }
     }
 
@@ -223,18 +231,23 @@ body {
       }
 
       .main {
+        flex-direction: column;
           .navBar {
               width: 100%;
               min-height: 10rem;
               flex-direction: row;
               gap: 26px;
               justify-content: space-evenly;
-              transform: translateY(-305px);
+              transform: translateY(-1500px);
               transition: transform .3s ease;
           }
 
-          .navBar.hide {
+          .navBar.show {
             transform: translateY(0);
+          }
+
+          .content {
+            width: 100vw;
           }
       }
     }

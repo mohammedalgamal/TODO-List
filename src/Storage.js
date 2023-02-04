@@ -12,7 +12,7 @@ export const restoreLocal = () => {
     if (projectsList) {
         returnProjects = projectsList.map((project) => JSONToProject(project));
     } else {
-        returnProjects = [];
+        returnProjects = [new Project("Default")];
     };
     return returnProjects;
 };
