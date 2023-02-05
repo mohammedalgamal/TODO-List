@@ -10,6 +10,7 @@ import makeNavBar, { makeProjects } from "./navbar";
 import makeFooter from "./footer";
 import makeFormType, { makeFormHTML, toggleShowingForm } from "./form";
 import callShowingFunc, { showAllTasks } from "./tabs";
+import addMenuBtn from "./phone";
 
 // Change website icon
 const icon = document.createElement("link");
@@ -37,23 +38,8 @@ document.querySelector(".allTasks").classList.add("active");
 showAllTasks();
 callShowingFunc();
 
-
 // Add menu button when using phone screen
-const navBar = document.querySelector(".navBar");
-const menuBtn = document.querySelector(".showMore");
-const content = document.querySelector(".content");
-const media = window.innerHeight - window.innerWidth;
-
-if (media >= 0) {
-    content.style.position = "fixed";
-};
-
-menuBtn.addEventListener("click", () => {
-    menuBtn.classList.toggle("active");
-    navBar.classList.toggle("show");
-    navBar.classList.toggle("shadow-lg");
-    content.style.backgroundColor = navBar.classList.contains("show") ? "#859280" : "#c9d9c2";
-});
+addMenuBtn();
 
 
 

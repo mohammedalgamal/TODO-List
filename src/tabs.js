@@ -1,5 +1,6 @@
 /* eslint-disable no-loop-func */
 /* eslint-disable no-plusplus */
+import { showNavBar } from "./phone";
 
 export function showAllTasks() {
     const title = document.querySelector(".contentUpper");
@@ -34,6 +35,7 @@ function toggleActive(currentActive, allButtons) {
 
 export default function callShowingFunc() {
     const allTabs = document.querySelectorAll(".project,.allTasks,.today,.week");
+    const media = window.innerHeight - window.innerWidth;
     for (let i = 0; i < allTabs.length; i++) {
         allTabs[i].addEventListener("click", () => {
             toggleActive(allTabs[i], allTabs);
@@ -50,6 +52,10 @@ export default function callShowingFunc() {
             else {
                 showProjectTasks(allTabs[i]);
             };
+
+            if (media >= 0) {
+                showNavBar();
+            }
         });
     };
 };
