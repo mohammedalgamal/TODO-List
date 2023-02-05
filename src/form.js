@@ -1,4 +1,5 @@
 import Project from "./projectClass";
+// eslint-disable-next-line import/no-cycle
 import addNewProject from "./projects";
 
 export default function makeFormType(type) {
@@ -32,6 +33,26 @@ export default function makeFormType(type) {
         projectName.autofocus = true;
 
         nameFormGroup.appendChild(projectName);
+
+        form.appendChild(nameFormGroup);
+    }
+    else {
+        title.innerHTML = "Add new task";
+        form.classList.add("taskForm");
+
+        const nameFormGroup = document.createElement("div");
+        nameFormGroup.classList.add("form-group");
+
+        const taskName = document.createElement("input");
+        taskName.type = "text";
+        taskName.classList = "form-control";
+        taskName.placeholder = "Task name";
+        taskName.name = "name";
+        taskName.id = "name";
+        taskName.required = true;
+        taskName.autofocus = true;
+
+        nameFormGroup.appendChild(taskName);
 
         form.appendChild(nameFormGroup);
     };

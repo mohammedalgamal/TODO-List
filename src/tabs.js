@@ -2,6 +2,8 @@
 /* eslint-disable no-plusplus */
 import { showNavBar } from "./phone";
 import plusIcon from "./Images/icons8-plus-100.png";
+// eslint-disable-next-line import/no-cycle
+import makeFormType, { toggleShowingForm } from "./form";
 
 function addTaskDiv() {
     const parent = document.querySelector(".contentUpper");
@@ -19,6 +21,11 @@ function addTaskDiv() {
     element.innerHTML += "Add task";
 
     parent.appendChild(element);
+
+    element.addEventListener("click", () => {
+        makeFormType("task");
+        toggleShowingForm("show");
+    });
 }
 
 export function showAllTasks() {
@@ -99,3 +106,8 @@ export default function callShowingFunc() {
     };
 
 };
+
+/* export function addTaskForm() {
+    const addTaskBtn = document.querySelector(".addTask");
+
+} */
