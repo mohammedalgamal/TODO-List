@@ -70,6 +70,7 @@ body .main .navBar .item {
   display: flex;
   align-items: center;
   gap: 16px;
+  padding: 8px 16px;
 }
 body .main .navBar img {
   width: calc(1.1vw + 1.1vh);
@@ -97,16 +98,14 @@ body .main .navBar .projects .projectsLower {
   font-weight: 300;
   font-size: calc(0.7 * (1vw + 1vh));
 }
-body .main .navBar .tasks .tasksLower .item,
-body .main .navBar .tasks .projectsLower .item,
-body .main .navBar .projects .tasksLower .item,
-body .main .navBar .projects .projectsLower .item {
-  padding: 8px 16px;
-}
 body .main .navBar .tasks .tasksLower .item:hover,
+body .main .navBar .tasks .tasksLower .item.active,
 body .main .navBar .tasks .projectsLower .item:hover,
+body .main .navBar .tasks .projectsLower .item.active,
 body .main .navBar .projects .tasksLower .item:hover,
-body .main .navBar .projects .projectsLower .item:hover {
+body .main .navBar .projects .tasksLower .item.active,
+body .main .navBar .projects .projectsLower .item:hover,
+body .main .navBar .projects .projectsLower .item.active {
   background-color: #71816a;
   border-radius: 8px;
 }
@@ -114,6 +113,18 @@ body .main .content {
   width: 84vw;
   height: calc(100vh - (124px + 5vh));
   z-index: -2;
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+}
+body .main .content .contentUpper {
+  width: 100%;
+  height: 5%;
+  font-size: 20px;
+}
+body .main .content .contentLower {
+  width: 100%;
+  height: 95%;
 }
 body .footer {
   width: 100vw;
@@ -221,5 +232,10 @@ body .form.visible {
   }
   body .main .content {
     width: 100vw;
+  }
+  body .main .content .contentUpper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }/*# sourceMappingURL=style.css.map */

@@ -7,7 +7,7 @@ import { restoreLocal } from "./Storage";
 
 function makeElement(text, className, img, imgClass) {
     const element = document.createElement("div");
-    element.classList.add(className);
+    element.classList += className;
     element.classList.add("item");
 
     if (img) {
