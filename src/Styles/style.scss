@@ -5,6 +5,15 @@
     src: url("../Fonts/SunnySpellsBasicRegular-Yz1Wv.ttf");
 }
 
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 body {
     background-color: $third-color;
     min-width: 100vw;
@@ -131,6 +140,7 @@ body {
             display: flex;
             flex-direction: column;
 
+
             .nameDiv,
             .addTask {
               padding-left: 16px;
@@ -210,10 +220,10 @@ body {
       left: 50%;
       top: 50%;
       z-index: 3;
-      max-width: 300px;
-      min-width: 150px;
-      max-height: 400px;
-      min-height: 200px;
+      max-width: 400px;
+      min-width: 300px;
+      max-height: 450px;
+      min-height: 180px;
       background-color: rgb(76, 89, 81);
       text-align: center;
       padding: 15px;
@@ -234,19 +244,48 @@ body {
           font-weight: 700;
       }
 
-      #name:focus {
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .form-control:focus {
         box-shadow: 0 0 0 0.25rem rgba(13, 253, 113, 0.25);
         border-color: rgba(13, 253, 113, 0.25);
       }
 
-      .form-check {
-          position: relative;
-          .form-check-input {
-              position: absolute;
-          }
+      #date {
+        width: 70%;
       }
 
-      .btn {
+      #Details {
+        resize: vertical; 
+        max-height: 150px;
+      }
+
+      .date {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .priority {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        button {
+          font-weight: 700;
+        }
+
+        button:hover,
+        button.active {
+          color: white;
+        }
+      }
+
+      .submit-btn {
           width: 100%;
           background-color: rgb(23, 107, 30);
           border-color: rgb(23, 107, 30);

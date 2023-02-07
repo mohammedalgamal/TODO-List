@@ -2,6 +2,22 @@
   font-family: "logo-font";
   src: url("../Fonts/SunnySpellsBasicRegular-Yz1Wv.ttf");
 }
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 body {
   background-color: #c9d9c2;
   min-width: 100vw;
@@ -191,10 +207,10 @@ body .form {
   left: 50%;
   top: 50%;
   z-index: 3;
-  max-width: 300px;
-  min-width: 150px;
-  max-height: 400px;
-  min-height: 200px;
+  max-width: 400px;
+  min-width: 300px;
+  max-height: 450px;
+  min-height: 180px;
   background-color: rgb(76, 89, 81);
   text-align: center;
   padding: 15px;
@@ -212,17 +228,40 @@ body .form form {
 body .form .title {
   font-weight: 700;
 }
-body .form #name:focus {
+body .form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+body .form .form-control:focus {
   box-shadow: 0 0 0 0.25rem rgba(13, 253, 113, 0.25);
   border-color: rgba(13, 253, 113, 0.25);
 }
-body .form .form-check {
-  position: relative;
+body .form #date {
+  width: 70%;
 }
-body .form .form-check .form-check-input {
-  position: absolute;
+body .form #Details {
+  resize: vertical;
+  max-height: 150px;
 }
-body .form .btn {
+body .form .date {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+body .form .priority {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+body .form .priority button {
+  font-weight: 700;
+}
+body .form .priority button:hover,
+body .form .priority button.active {
+  color: white;
+}
+body .form .submit-btn {
   width: 100%;
   background-color: rgb(23, 107, 30);
   border-color: rgb(23, 107, 30);

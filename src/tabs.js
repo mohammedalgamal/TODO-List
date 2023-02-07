@@ -23,7 +23,7 @@ function addTaskDiv() {
     parent.appendChild(element);
 
     element.addEventListener("click", () => {
-        makeFormType("task");
+        makeFormType("task", "Add new task");
         toggleShowingForm("show");
     });
 }
@@ -56,7 +56,7 @@ function showWeekTasks() {
     title.appendChild(nameDiv);
 };
 
-function showProjectTasks(project) {
+export function showProjectTasks(project) {
     const title = document.querySelector(".contentUpper");
     title.innerHTML = "";
     const nameDiv = document.createElement("div");
@@ -66,7 +66,8 @@ function showProjectTasks(project) {
     addTaskDiv();
 };
 
-function toggleActive(currentActive, allButtons) {
+export function toggleActive(currentActive) {
+    const allButtons = document.querySelectorAll(".project,.allTasks,.today,.week");
     for (let i = 0; i < allButtons.length; i++) {
         if (allButtons[i] === currentActive) {
             allButtons[i].classList.add("active");
@@ -84,7 +85,7 @@ export default function callShowingFunc() {
     for (let i = 0; i < allTabs.length; i++) {
 
         allTabs[i].addEventListener("click", () => {
-            toggleActive(allTabs[i], allTabs);
+            toggleActive(allTabs[i]);
 
             if (allTabs[i].classList.contains("allTasks")) {
                 showAllTasks();
@@ -106,8 +107,3 @@ export default function callShowingFunc() {
     };
 
 };
-
-/* export function addTaskForm() {
-    const addTaskBtn = document.querySelector(".addTask");
-
-} */
