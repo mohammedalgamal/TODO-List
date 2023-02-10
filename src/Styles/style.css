@@ -162,8 +162,16 @@ body .main .content .contentLower {
   gap: 15px;
   grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
 }
+body .main .content .contentLower .card.Low {
+  background: linear-gradient(to right, rgb(14, 196, 26) 0%, rgb(14, 196, 26) 2%, #1b494b 2%, #1b494b 100%);
+}
+body .main .content .contentLower .card.Normal {
+  background: linear-gradient(to right, rgb(230, 216, 15) 0%, rgb(230, 216, 15) 2%, #1b494b 2%, #1b494b 100%);
+}
+body .main .content .contentLower .card.High {
+  background: linear-gradient(to right, rgb(202, 31, 31) 0%, rgb(202, 31, 31) 2%, #1b494b 2%, #1b494b 100%);
+}
 body .main .content .contentLower .card {
-  background-color: #1b494b;
   max-height: 200px;
   border-radius: 8px;
   display: flex;
