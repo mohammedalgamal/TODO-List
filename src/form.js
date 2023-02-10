@@ -67,16 +67,9 @@ export default function makeFormType(type, label = "") {
         taskName.required = true;
         taskName.autofocus = true;
 
-        const taskDetails = document.createElement("textarea");
-        taskDetails.classList = "form-control";
-        taskDetails.placeholder = "Task Details (Optional)";
-        taskDetails.name = "Details";
-        taskDetails.id = "Details";
-
         const value = new Date().toJSON().slice(0, 10).replace(/-/g, "-");
 
         nameFormGroup.appendChild(taskName);
-        nameFormGroup.appendChild(taskDetails);
         nameFormGroup.innerHTML +=
             `
         <div class="date">
@@ -110,7 +103,6 @@ export function getFormData() {
     }
     else {
         const name = document.querySelector("#name").value;
-        const details = document.querySelector("#Details").value;
         const date = document.querySelector("#date").value;
         const priority = document.querySelector(".priority .active").innerHTML;
         let project = document.querySelector(".contentUpper .nameDiv").innerHTML;
@@ -122,7 +114,7 @@ export function getFormData() {
 
         for (let i = 0; i <= storage.length; i++) {
             if (storage[i].name === project) {
-                storage[i].addNewTask(name, date, priority, project, details);
+                storage[i].addNewTask(name, date, priority, project);
                 saveLocal(storage);
                 break;
             };

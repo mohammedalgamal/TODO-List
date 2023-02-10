@@ -2,14 +2,6 @@
   font-family: "logo-font";
   src: url("../Fonts/SunnySpellsBasicRegular-Yz1Wv.ttf");
 }
-@-webkit-keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
 @keyframes fadeIn {
   0% {
     opacity: 0;
@@ -127,14 +119,13 @@ body .main .navBar .projects .projectsLower .item.active {
 }
 body .main .content {
   width: 84vw;
-  height: calc(100vh - (124px + 5vh));
+  min-height: calc(100vh - (124px + 5vh));
   display: flex;
   flex-direction: column;
   padding: 24px;
 }
 body .main .content .contentUpper {
   width: 100%;
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   font-size: 26px;
@@ -164,7 +155,54 @@ body .main .content .contentUpper .addTask:hover {
 }
 body .main .content .contentLower {
   width: 100%;
-  height: 95%;
+  min-height: 95%;
+  padding: 24px;
+  display: grid;
+  justify-content: center;
+  gap: 15px;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+}
+body .main .content .contentLower .card {
+  background-color: #1b494b;
+  max-height: 200px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  gap: 12px;
+  z-index: 1;
+  color: white;
+}
+body .main .content .contentLower .card div {
+  align-self: center;
+}
+body .main .content .contentLower .card .titleDiv {
+  font-weight: 600;
+}
+body .main .content .contentLower .card .dateDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+body .main .content .contentLower .card .edit {
+  background-color: #be7912;
+}
+body .main .content .contentLower .card .remove {
+  background-color: #a22020;
+}
+body .main .content .contentLower .card .myBtn {
+  width: 100%;
+}
+body .main .content .contentLower .card button {
+  border-radius: 8px;
+  width: 100%;
+  height: 2.5rem;
+  font-weight: 300;
+  text-align: center;
+}
+body .main .content .contentLower .card button:hover {
+  filter: brightness(85%);
 }
 body .footer {
   width: 100vw;
@@ -302,7 +340,7 @@ body .form.visible {
     align-items: center;
   }
   body .main .content .contentUpper .nameDiv,
-body .main .content .contentUpper .addTask {
+  body .main .content .contentUpper .addTask {
     padding-left: 0;
   }
   body .main .content .contentUpper .addTask {

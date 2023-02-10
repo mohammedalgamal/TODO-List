@@ -1,10 +1,12 @@
-// eslint-disable-next-line import/no-cycle
+/* eslint-disable import/no-cycle */
 import { Project } from "./projects";
+import { reloadCurrentActive } from "./tabs";
 
 const JSONToProject = (project) => new Project(project.name, project.tasksList);
 
 export const saveLocal = (passedProjects) => {
     localStorage.setItem("projectsList", JSON.stringify(passedProjects));
+    reloadCurrentActive();
 };
 
 export const restoreLocal = () => {

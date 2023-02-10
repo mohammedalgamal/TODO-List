@@ -10,8 +10,12 @@ export class Project {
         this.tasksList = tasksList;
     };
 
-    addNewTask(name, date, priority, project, details = "") {
-        this.tasksList.push(new Task(name, date, priority, project, details));
+    addNewTask(name, date, priority, project) {
+        this.tasksList.push(new Task(name, date, priority, project));
+    };
+
+    getTasks() {
+        return this.tasksList;
     };
 };
 
