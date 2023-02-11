@@ -10,15 +10,10 @@ export function showNavBar() {
 
 export default function addMenuBtn() {
     const menuBtn = document.querySelector(".showMore");
-    const content = document.querySelector(".content");
-    const media = window.innerHeight - window.innerWidth;
-
-    if (media >= 0) {
-        content.style.position = "fixed";
-    };
 
     menuBtn.addEventListener("click", () => {
         showNavBar();
     });
+
 };
 

@@ -58,7 +58,6 @@ body {
           }
         }
 
-        .showMore:hover,
         .active {
           background-color: #0c2021;
           border-radius: 8px;
@@ -393,12 +392,11 @@ body {
               flex-direction: row;
               gap: 26px;
               justify-content: space-evenly;
-              transform: translateY(-1500px);
-              transition: transform .3s ease;
+              display: none;
           }
 
           .navBar.show {
-            transform: translateY(0);
+            display: flex;
           }
 
           .content {

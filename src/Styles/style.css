@@ -51,7 +51,6 @@ body .header .showMore img {
   width: 25px;
   height: auto;
 }
-body .header .showMore:hover,
 body .header .active {
   background-color: #0c2021;
   border-radius: 8px;
@@ -333,11 +332,10 @@ body .form.visible {
     flex-direction: row;
     gap: 26px;
     justify-content: space-evenly;
-    transform: translateY(-1500px);
-    transition: transform 0.3s ease;
+    display: none;
   }
   body .main .navBar.show {
-    transform: translateY(0);
+    display: flex;
   }
   body .main .content {
     width: 100vw;
