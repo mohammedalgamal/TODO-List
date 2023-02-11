@@ -21,16 +21,7 @@ export class Project {
 
 export default function addNewProject(projectObject) {
     const projects = restoreLocal();
-    // eslint-disable-next-line no-plusplus
-    for (let i = 0; i < projects.length; i++) {
-        if (projects[i].name === projectObject.name) {
-            const currentActive = document.querySelector(".navBar .active").classList[0];
-            makeProjects();
-            callShowingFunc();
-            document.querySelector(`.${currentActive}`).classList.add("active");
-            return;
-        };
-    };
+
     projects.push(projectObject);
     saveLocal(projects);
     makeProjects();

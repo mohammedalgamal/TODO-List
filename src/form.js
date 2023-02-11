@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 /* eslint-disable no-plusplus */
 // eslint-disable-next-line import/no-cycle
 import addNewProject, { Project } from "./projects";
@@ -95,10 +96,17 @@ export default function makeFormType(type, label = "") {
 
 export function getFormData() {
     const form = document.querySelector(".dataForm");
+    const localStorage = restoreLocal();
 
     if (form.classList.contains("projectForm")) {
         const name = document.querySelector("#name").value;
 
+        for (let i = 0; i < localStorage.length; i++) {
+            if (localStorage[i].name === name) {
+                alert(`Project "${name}" already exists!`);
+                return;
+            };
+        }
         addNewProject(new Project(name));
     }
     else {
@@ -114,6 +122,13 @@ export function getFormData() {
 
         for (let i = 0; i <= storage.length; i++) {
             if (storage[i].name === project) {
+                const taskList = storage[i].tasksList;
+                for (let j = 0; j < taskList.length; j++) {
+                    if (taskList[j].name === name) {
+                        alert(`Task "${name}" already exists in project "${project}"!`);
+                        return;
+                    };
+                };
                 storage[i].addNewTask(name, date, priority, project);
                 saveLocal(storage);
                 break;

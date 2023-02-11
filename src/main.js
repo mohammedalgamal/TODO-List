@@ -1,5 +1,32 @@
 /* eslint-disable no-plusplus */
 import { format, parseISO } from "date-fns";
+// eslint-disable-next-line import/no-cycle
+import { restoreLocal, saveLocal } from "./Storage";
+
+function deleteCards() {
+    const deleteButtons = document.querySelectorAll(".myCard .remove");
+    const storage = restoreLocal();
+
+    for (let i = 0; i < deleteButtons.length; i++) {
+        deleteButtons[i].addEventListener("click", () => {
+            const name = deleteButtons[i].classList[1];
+            const project = deleteButtons[i].classList[2];
+
+            for (let j = 0; j < storage.length; j++) {
+                if (storage[j].name === project) {
+                    // eslint-disable-next-line array-callback-return, consistent-return
+                    storage[j].tasksList = storage[j].tasksList.filter((task) => {
+                        if (task.name !== name) {
+                            return task;
+                        };
+                    });
+                    break;
+                };
+            };
+            saveLocal(storage);
+        });
+    }
+};
 
 export default function makeMainSection() {
     const main = document.createElement("div");
@@ -41,12 +68,13 @@ export function makeCards(tasksList) {
                 </div>
 
                 <div class="editBtn myBtn">
-                    <button class="edit ${tasksList[i].name} ${tasksList[i].project} ${i}">Edit</button>
+                    <button class="edit ${tasksList[i].name} ${tasksList[i].project}">Edit</button>
                 </div>
                 <div class="removeBtn myBtn">
-                    <button class="remove ${tasksList[i].name} ${tasksList[i].project} ${i}">Remove</button>
+                    <button class="remove ${tasksList[i].name} ${tasksList[i].project}">Remove</button>
                 </div>
         </div>
         `;
     };
+    deleteCards();
 };
