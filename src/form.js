@@ -106,6 +106,11 @@ export function getFormData() {
                 alert(`Project "${name}" already exists!`);
                 return;
             };
+            if (name.includes(" ") || name.includes(".") || name.includes("#")
+                || name.includes(",")) {
+                alert("Project name should only include letters, numbers or the symbols '_-'");
+                return;
+            }
         }
         addNewProject(new Project(name));
     }
