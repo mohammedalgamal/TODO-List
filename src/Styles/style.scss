@@ -175,33 +175,31 @@ body {
             gap: 15px;
             grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
             
-            .card.Low {
-              background: linear-gradient(to right, 
-              rgb(14, 196, 26) 0%, 
-              rgb(14, 196, 26) 2%, 
-              $main-color 2%, 
-              $main-color 100%);
+            .myCard.Low {
+              background: linear-gradient(to right,  
+              rgb(14, 196, 26) 4%, 
+              $main-color 4%, 
+              $main-color);
             }
 
-            .card.Normal {
+            .myCard.Normal {
               background: linear-gradient(to right, 
-              rgb(230, 216, 15) 0%, 
-              rgb(230, 216, 15) 2%, 
-              $main-color 2%, 
-              $main-color 100%);
+              rgb(230, 216, 15) 4%,  
+              $main-color 4%,
+              $main-color);
             }
 
-            .card.High {
+            .myCard.High {
               background: linear-gradient(to right, 
               rgb(202, 31, 31) 0%, 
-              rgb(202, 31, 31) 2%, 
-              $main-color 2%, 
+              rgb(202, 31, 31) 4%, 
+              $main-color 4%, 
               $main-color 100%);
             }
 
-            .card {
+            .myCard {
                 max-height: 200px;
-                border-radius: 8px;
+                border-radius: 10px;
                 display: flex;
                 flex-direction: column;
                 padding: 12px;

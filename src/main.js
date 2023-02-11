@@ -31,7 +31,7 @@ export function makeCards(tasksList) {
     for (let i = 0; i < tasksList.length; i++) {
         main.innerHTML +=
             `    
-            <div class="card ${tasksList[i].priority}">
+            <div class="myCard ${tasksList[i].priority}">
                 <div class="titleDiv">
                     ${tasksList[i].name} (${tasksList[i].project})
                 </div>

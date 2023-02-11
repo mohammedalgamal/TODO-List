@@ -162,18 +162,18 @@ body .main .content .contentLower {
   gap: 15px;
   grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
 }
-body .main .content .contentLower .card.Low {
-  background: linear-gradient(to right, rgb(14, 196, 26) 0%, rgb(14, 196, 26) 2%, #1b494b 2%, #1b494b 100%);
+body .main .content .contentLower .myCard.Low {
+  background: linear-gradient(to right, rgb(14, 196, 26) 4%, #1b494b 4%, #1b494b);
 }
-body .main .content .contentLower .card.Normal {
-  background: linear-gradient(to right, rgb(230, 216, 15) 0%, rgb(230, 216, 15) 2%, #1b494b 2%, #1b494b 100%);
+body .main .content .contentLower .myCard.Normal {
+  background: linear-gradient(to right, rgb(230, 216, 15) 4%, #1b494b 4%, #1b494b);
 }
-body .main .content .contentLower .card.High {
-  background: linear-gradient(to right, rgb(202, 31, 31) 0%, rgb(202, 31, 31) 2%, #1b494b 2%, #1b494b 100%);
+body .main .content .contentLower .myCard.High {
+  background: linear-gradient(to right, rgb(202, 31, 31) 0%, rgb(202, 31, 31) 4%, #1b494b 4%, #1b494b 100%);
 }
-body .main .content .contentLower .card {
+body .main .content .contentLower .myCard {
   max-height: 200px;
-  border-radius: 8px;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   padding: 12px;
@@ -181,35 +181,35 @@ body .main .content .contentLower .card {
   z-index: 1;
   color: white;
 }
-body .main .content .contentLower .card div {
+body .main .content .contentLower .myCard div {
   align-self: center;
 }
-body .main .content .contentLower .card .titleDiv {
+body .main .content .contentLower .myCard .titleDiv {
   font-weight: 600;
 }
-body .main .content .contentLower .card .dateDiv {
+body .main .content .contentLower .myCard .dateDiv {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
 }
-body .main .content .contentLower .card .edit {
+body .main .content .contentLower .myCard .edit {
   background-color: #be7912;
 }
-body .main .content .contentLower .card .remove {
+body .main .content .contentLower .myCard .remove {
   background-color: #a22020;
 }
-body .main .content .contentLower .card .myBtn {
+body .main .content .contentLower .myCard .myBtn {
   width: 100%;
 }
-body .main .content .contentLower .card button {
+body .main .content .contentLower .myCard button {
   border-radius: 8px;
   width: 100%;
   height: 2.5rem;
   font-weight: 300;
   text-align: center;
 }
-body .main .content .contentLower .card button:hover {
+body .main .content .contentLower .myCard button:hover {
   filter: brightness(85%);
 }
 body .footer {
