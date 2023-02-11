@@ -21,7 +21,7 @@ export default function makeFormType(type, label = "") {
     form.innerHTML = "";
 
     const title = document.createElement("div");
-    title.className = "title";
+    title.className = "title formTitle";
 
     form.appendChild(title);
 
@@ -61,7 +61,7 @@ export default function makeFormType(type, label = "") {
 
         const taskName = document.createElement("input");
         taskName.type = "text";
-        taskName.classList = "form-control";
+        taskName.classList = "form-control editName";
         taskName.placeholder = "Task name";
         taskName.name = "name";
         taskName.id = "name";
@@ -75,16 +75,16 @@ export default function makeFormType(type, label = "") {
             `
         <div class="date">
             Due date:
-            <input type="date" class="form-control" name="Date" id="date" value=${value}>
+            <input type="date" class="form-control editDate" name="Date" id="date" value=${value}>
         </div>
         `;
         nameFormGroup.innerHTML +=
             `
         <div class="priority">
             Priority:
-            <button class="btn btn-outline-success" type="button">Low</button>
-            <button class="btn btn-outline-warning active" type="button">Normal</button>
-            <button class="btn btn-outline-danger" type="button">High</button>
+            <button class="btn btn-outline-success Low" type="button">Low</button>
+            <button class="btn btn-outline-warning active Normal" type="button">Normal</button>
+            <button class="btn btn-outline-danger High" type="button">High</button>
         </div>`;
 
         form.appendChild(nameFormGroup);
@@ -109,7 +109,7 @@ export function getFormData() {
         }
         addNewProject(new Project(name));
     }
-    else {
+    else if (document.querySelector(".formTitle").innerHTML.slice(0, 9) !== "Edit task") {
         const name = document.querySelector("#name").value;
         const date = document.querySelector("#date").value;
         const priority = document.querySelector(".priority .active").innerHTML;
@@ -135,6 +135,35 @@ export function getFormData() {
             };
         };
 
+    }
+    else {
+        const name = document.querySelector("#name").value;
+        const date = document.querySelector("#date").value;
+        const priority = document.querySelector(".priority .active").innerHTML;
+        let project = document.querySelector(".contentUpper .nameDiv").innerHTML;
+        if (project === "All tasks" || project === "Toady's tasks" || project === "This week's tasks") {
+            const projectTitle = document.querySelector(".formTitle").innerHTML;
+            project = projectTitle
+                .slice(projectTitle.indexOf("(") + 1, projectTitle.indexOf(")"));
+        };
+
+        const storage = restoreLocal();
+
+        for (let i = 0; i < storage.length; i++) {
+            if (storage[i].name === project) {
+                const tasks = storage[i].tasksList;
+                for (let j = 0; j < tasks.length; j++) {
+                    if (document.querySelector(".formTitle").innerHTML
+                        .slice(10, document.querySelector(".formTitle").innerHTML.indexOf("(") - 1) === tasks[j].name) {
+                        storage[i].tasksList[j].name = name;
+                        storage[i].tasksList[j].date = date;
+                        storage[i].tasksList[j].priority = priority;
+                        saveLocal(storage);
+                        break;
+                    };
+                };
+            }
+        };
     };
 };
 

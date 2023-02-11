@@ -1,6 +1,7 @@
+/* eslint-disable import/no-cycle */
 /* eslint-disable no-plusplus */
 import { format, parseISO } from "date-fns";
-// eslint-disable-next-line import/no-cycle
+import makeFormType, { toggleShowingForm } from "./form";
 import { restoreLocal, saveLocal } from "./Storage";
 
 function deleteCards() {
@@ -25,7 +26,43 @@ function deleteCards() {
             };
             saveLocal(storage);
         });
-    }
+    };
+};
+
+function editCard() {
+    const editButtons = document.querySelectorAll(".myCard .edit");
+    const storage = restoreLocal();
+
+    for (let i = 0; i < editButtons.length; i++) {
+        editButtons[i].addEventListener("click", () => {
+            const name = editButtons[i].classList[1];
+            const project = editButtons[i].classList[2];
+
+            for (let j = 0; j < storage.length; j++) {
+                if (storage[j].name === project) {
+                    const taskList = storage[j].tasksList;
+                    for (let k = 0; k < taskList.length; k++) {
+                        if (taskList[k].name === name) {
+                            const taskName = name;
+                            const taskDate = taskList[k].date;
+                            const taskProject = taskList[k].project;
+                            const taskPriority = taskList[k].priority;
+
+                            makeFormType("task", `Edit task ${taskName} (${taskProject})`);
+                            document.querySelector("#name").value = taskName;
+                            document.querySelector("#date").value = taskDate;
+                            document.querySelector(".btn.Normal").classList.remove("active");
+                            document.querySelector(`.btn.${taskPriority}`).classList.add("active");
+                            toggleShowingForm("show");
+                        };
+                    };
+                    break;
+                };
+            };
+            saveLocal(storage);
+        });
+    };
+
 };
 
 export default function makeMainSection() {
@@ -77,4 +114,5 @@ export function makeCards(tasksList) {
         `;
     };
     deleteCards();
+    editCard();
 };
