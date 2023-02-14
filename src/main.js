@@ -103,12 +103,13 @@ export function makeCards(tasksList) {
                 <div class="dueDateDiv">
                     Due Date: ${format(parseISO(tasksList[i].date), "dd/MM/yyyy")}
                 </div>
-
-                <div class="editBtn myBtn">
-                    <button class="edit ${tasksList[i].name} ${tasksList[i].project}">Edit</button>
-                </div>
-                <div class="removeBtn myBtn">
-                    <button class="remove ${tasksList[i].name} ${tasksList[i].project}">Remove</button>
+                <div class="myBtns">
+                    <div class="editBtn myBtn">
+                        <button class="edit ${tasksList[i].name} ${tasksList[i].project}">Edit</button>
+                    </div>
+                    <div class="removeBtn myBtn">
+                        <button class="remove ${tasksList[i].name} ${tasksList[i].project}">Remove</button>
+                    </div>
                 </div>
         </div>
         `;

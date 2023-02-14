@@ -171,7 +171,7 @@ body .main .content .contentLower .myCard.High {
   background: linear-gradient(to right, rgb(202, 31, 31) 0%, rgb(202, 31, 31) 4%, #1b494b 4%, #1b494b 100%);
 }
 body .main .content .contentLower .myCard {
-  max-height: 200px;
+  max-height: 170px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -198,13 +198,15 @@ body .main .content .contentLower .myCard .edit {
 body .main .content .contentLower .myCard .remove {
   background-color: #a22020;
 }
-body .main .content .contentLower .myCard .myBtn {
+body .main .content .contentLower .myCard .myBtns {
   width: 100%;
+  display: flex;
+  justify-content: space-evenly;
 }
 body .main .content .contentLower .myCard button {
   border-radius: 8px;
-  width: 100%;
-  height: 2.5rem;
+  width: 5rem;
+  height: 3rem;
   font-weight: 300;
   text-align: center;
 }
