@@ -10,8 +10,8 @@ function deleteCards() {
 
     for (let i = 0; i < deleteButtons.length; i++) {
         deleteButtons[i].addEventListener("click", () => {
-            const name = deleteButtons[i].classList[1];
-            const project = deleteButtons[i].classList[2];
+            const name = deleteButtons[i].dataset.task;
+            const { project } = deleteButtons[i].dataset;
 
             for (let j = 0; j < storage.length; j++) {
                 if (storage[j].name === project) {
@@ -35,8 +35,8 @@ function editCard() {
 
     for (let i = 0; i < editButtons.length; i++) {
         editButtons[i].addEventListener("click", () => {
-            const name = editButtons[i].classList[1];
-            const project = editButtons[i].classList[2];
+            const name = editButtons[i].dataset.task;
+            const { project } = editButtons[i].dataset;
 
             for (let j = 0; j < storage.length; j++) {
                 if (storage[j].name === project) {
@@ -105,10 +105,15 @@ export function makeCards(tasksList) {
                 </div>
                 <div class="myBtns">
                     <div class="editBtn myBtn">
-                        <button class="edit ${tasksList[i].name} ${tasksList[i].project}">Edit</button>
+                        <button 
+                        class="edit" 
+                        data-project = "${tasksList[i].project}"
+                        data-task = "${tasksList[i].name}">Edit</button>
                     </div>
                     <div class="removeBtn myBtn">
-                        <button class="remove ${tasksList[i].name} ${tasksList[i].project}">Remove</button>
+                        <button class="remove" 
+                        data-project = "${tasksList[i].project}"
+                        data-task = "${tasksList[i].name}">Remove</button>
                     </div>
                 </div>
         </div>

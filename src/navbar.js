@@ -6,10 +6,11 @@ import plusIcon from "./Images/icons8-plus-100.png";
 // eslint-disable-next-line import/no-cycle
 import { restoreLocal } from "./Storage";
 
-function makeElement(text, className, img, imgClass) {
+function makeElement(text, className, img, imgClass, data = "") {
     const element = document.createElement("div");
     element.classList += className;
     element.classList.add("item");
+    element.dataset.name = data;
 
     if (img) {
         const elementImg = document.createElement("img");
@@ -48,8 +49,8 @@ export function makeProjects() {
 
     // eslint-disable-next-line no-plusplus
     for (let i = 0; i < projectsStorage.length; i++) {
-        const className = projectsStorage[i].name.replace(/\s/g, "");
-        projectsDiv.appendChild(makeElement(projectsStorage[i].name, `${className} project`, oneProjectIcon, "oneProjectsIcon"));
+        const className = projectsStorage[i].name;
+        projectsDiv.appendChild(makeElement(projectsStorage[i].name, "project", oneProjectIcon, "oneProjectsIcon", className));
     };
 };
 

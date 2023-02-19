@@ -26,8 +26,8 @@ export default function addNewProject(projectObject) {
     saveLocal(projects);
     makeProjects();
     callShowingFunc();
-    const name = projectObject.name.replace(/\s/g, "");
-    const newProject = document.querySelector(`.project.${name}`);
+    const { name } = projectObject;
+    const newProject = document.querySelector(`[data-name="${name}"]`);
     toggleActive(newProject);
     showProjectTasks(newProject);
 };

@@ -106,11 +106,6 @@ export function getFormData() {
                 alert(`Project "${name}" already exists!`);
                 return;
             };
-            if (name.includes(" ") || name.includes(".") || name.includes("#")
-                || name.includes(",")) {
-                alert("Project name should only include letters, numbers or the symbols '_-'");
-                return;
-            }
         }
         addNewProject(new Project(name));
     }
@@ -135,12 +130,6 @@ export function getFormData() {
                     };
                 };
 
-                if (name.includes(" ") || name.includes(".") || name.includes("#")
-                    || name.includes(",")) {
-                    alert("Task name should only include letters, numbers or the symbols '_-'");
-                    return;
-                };
-
                 storage[i].addNewTask(name, date, priority, project);
                 saveLocal(storage);
                 break;
@@ -157,12 +146,6 @@ export function getFormData() {
             const projectTitle = document.querySelector(".formTitle").innerHTML;
             project = projectTitle
                 .slice(projectTitle.indexOf("(") + 1, projectTitle.indexOf(")"));
-        };
-
-        if (name.includes(" ") || name.includes(".") || name.includes("#")
-            || name.includes(",")) {
-            alert("Task name should only include letters, numbers or the symbols '_-'");
-            return;
         };
 
         const storage = restoreLocal();
