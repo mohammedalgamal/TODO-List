@@ -1,12 +1,15 @@
+/* eslint-disable no-plusplus */
 import todayIcon from "./Images/icons8-calendar-1-100.png";
 import weekIcon from "./Images/icons8-calendar-7-100.png";
 import allTasksIcon from "./Images/icons8-tasklist-100.png";
 import oneProjectIcon from "./Images/icons8-check-64.png";
 import plusIcon from "./Images/icons8-plus-100.png";
+import closeIcon from "./Images/icons8-close-100.png";
 // eslint-disable-next-line import/no-cycle
-import { restoreLocal } from "./Storage";
+import { restoreLocal, saveLocal } from "./Storage";
+import callShowingFunc, { reloadCurrentActive, showAllTasks, toggleActive } from "./tabs";
 
-function makeElement(text, className, img, imgClass, data = "") {
+function makeElement(text, className, img, imgClass, data = "", remove = false) {
     const element = document.createElement("div");
     element.classList += className;
     element.classList.add("item");
@@ -22,6 +25,15 @@ function makeElement(text, className, img, imgClass, data = "") {
     };
 
     element.innerHTML += text;
+
+    if (remove && text !== "Default") {
+        element.innerHTML +=
+            `
+        <div class="removeProject">
+            <img class="removeProjectImg" data-project = "${text}" src=${closeIcon} alt="remove btn">
+        </div>
+        `;
+    };
 
     return element;
 };
@@ -42,16 +54,61 @@ function makeDiv(className) {
     return [div, upperDiv, lowerDiv];
 };
 
+function removeProject() {
+    const deleteBtns = document.querySelectorAll(".removeProject");
+    const storage = restoreLocal();
+
+    for (let i = 0; i < deleteBtns.length; i++) {
+        deleteBtns[i].addEventListener("click", (e) => {
+            e.stopPropagation();
+            const currentActive = document.querySelector(".navBar .active");
+            const isTasks = currentActive.parentElement.classList.contains("tasksLower");
+            const activeProjectName = currentActive.dataset.name;
+            const element = deleteBtns[i].parentElement;
+            const condition = currentActive === element;
+            const projectName = e.target.dataset.project;
+            for (let j = 0; j < storage.length; j++) {
+                if (storage[j].name === projectName) {
+                    storage.splice(j, 1);
+                    if ((!isTasks) && (condition)) {
+                        saveLocal(storage, false);
+                    }
+                    else {
+                        saveLocal(storage);
+                    };
+                    // eslint-disable-next-line no-use-before-define
+                    makeProjects();
+                    callShowingFunc();
+                    if (!isTasks) {
+                        if (!condition) {
+                            const newActive = document.querySelector(`[data-name="${activeProjectName}"]`);
+                            toggleActive(newActive);
+                            reloadCurrentActive();
+                        }
+                        else {
+                            const allTasks = document.querySelector(".tasksLower .allTasks");
+                            toggleActive(allTasks);
+                            showAllTasks();
+                        };
+                    };
+                    break;
+                };
+            };
+        });
+    }
+}
+
 export function makeProjects() {
     const projectsDiv = document.querySelector(".projectsDivUpper");
     projectsDiv.innerHTML = "";
     const projectsStorage = restoreLocal();
 
-    // eslint-disable-next-line no-plusplus
     for (let i = 0; i < projectsStorage.length; i++) {
         const className = projectsStorage[i].name;
-        projectsDiv.appendChild(makeElement(projectsStorage[i].name, "project", oneProjectIcon, "oneProjectsIcon", className));
+        projectsDiv.appendChild(makeElement(projectsStorage[i].name, "project", oneProjectIcon, "oneProjectsIcon", className, true));
     };
+
+    removeProject();
 };
 
 export default function makeNavBar() {

@@ -1,7 +1,6 @@
 /* eslint-disable no-loop-func */
 /* eslint-disable no-plusplus */
 import { isThisWeek, parseISO } from "date-fns";
-import { showNavBar } from "./phone";
 import plusIcon from "./Images/icons8-plus-100.png";
 // eslint-disable-next-line import/no-cycle
 import makeFormType, { toggleShowingForm } from "./form";
@@ -136,7 +135,6 @@ export function toggleActive(currentActive) {
 
 export default function callShowingFunc() {
     const allTabs = document.querySelectorAll(".project,.allTasks,.today,.week");
-    const media = window.innerHeight - window.innerWidth;
 
     for (let i = 0; i < allTabs.length; i++) {
 
@@ -157,10 +155,6 @@ export default function callShowingFunc() {
                     showProjectTasks(allTabs[i]);
                 };
             };
-
-            if (media >= 0) {
-                showNavBar();
-            }
         });
     };
 

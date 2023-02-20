@@ -4,9 +4,11 @@ import { reloadCurrentActive } from "./tabs";
 
 const JSONToProject = (project) => new Project(project.name, project.tasksList);
 
-export const saveLocal = (passedProjects) => {
+export const saveLocal = (passedProjects, condition = true) => {
     localStorage.setItem("projectsList", JSON.stringify(passedProjects));
-    reloadCurrentActive();
+    if (condition) {
+        reloadCurrentActive();
+    };
 };
 
 export const restoreLocal = () => {

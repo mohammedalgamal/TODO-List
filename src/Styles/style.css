@@ -94,7 +94,16 @@ body .main .navBar .projects .tasksUpper,
 body .main .navBar .projects .projectsUpper {
   font-weight: 500;
   margin-bottom: 14px;
-  font-size: calc(0.8vw + 0.8vh);
+  font-size: calc(0.9vw + 0.9vh);
+}
+@media screen and (orientation: portrait) {
+  body .main .navBar .tasks .tasksUpper,
+  body .main .navBar .tasks .projectsUpper,
+  body .main .navBar .projects .tasksUpper,
+  body .main .navBar .projects .projectsUpper {
+    font-size: calc(1vw + 1vh);
+    margin-bottom: 4px;
+  }
 }
 body .main .navBar .tasks .tasksLower,
 body .main .navBar .tasks .projectsLower,
@@ -103,7 +112,15 @@ body .main .navBar .projects .projectsLower {
   display: flex;
   flex-direction: column;
   font-weight: 300;
-  font-size: calc(0.7 * (1vw + 1vh));
+  font-size: calc(0.8 * (1vw + 1vh));
+}
+@media screen and (orientation: portrait) {
+  body .main .navBar .tasks .tasksLower,
+  body .main .navBar .tasks .projectsLower,
+  body .main .navBar .projects .tasksLower,
+  body .main .navBar .projects .projectsLower {
+    font-size: calc(1vw + 1vh);
+  }
 }
 body .main .navBar .tasks .tasksLower .item:hover,
 body .main .navBar .tasks .tasksLower .item.active,
@@ -115,6 +132,28 @@ body .main .navBar .projects .projectsLower .item:hover,
 body .main .navBar .projects .projectsLower .item.active {
   background-color: #71816a;
   border-radius: 8px;
+}
+body .main .navBar .tasks .removeProject,
+body .main .navBar .projects .removeProject {
+  z-index: 3;
+  margin-left: auto;
+  border-radius: 8px;
+  padding: 2.5px;
+  width: calc(1vw + 1vh + 5px);
+  height: calc(1vw + 1vh + 5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body .main .navBar .tasks .removeProject img,
+body .main .navBar .projects .removeProject img {
+  margin: 0;
+  width: calc(1vw + 1vh);
+  height: calc(1vw + 1vh);
+}
+body .main .navBar .tasks .removeProject:hover,
+body .main .navBar .projects .removeProject:hover {
+  background-color: #a22020;
 }
 body .main .content {
   width: 84vw;
@@ -333,7 +372,8 @@ body .form.visible {
   }
   body .main .navBar {
     width: 100%;
-    min-height: 10rem;
+    min-height: 8rem;
+    padding: 28px 16px;
     flex-direction: row;
     gap: 26px;
     justify-content: space-evenly;
