@@ -17,7 +17,9 @@ body {
   display: flex;
   flex-direction: column;
 }
-body button, body input[type=submit], body input[type=reset] {
+body button,
+body input[type="submit"],
+body input[type="reset"] {
   background: none;
   color: inherit;
   border: none;
@@ -201,16 +203,31 @@ body .main .content .contentLower {
   grid-template-columns: repeat(auto-fill, minmax(200px, 0.65fr));
 }
 body .main .content .contentLower .myCard.Low {
-  background: linear-gradient(to right, rgb(14, 196, 26) 4%, #1b494b 4%, #1b494b);
+  background: linear-gradient(
+    to right,
+    rgb(14, 196, 26) 4%,
+    #1b494b 4%,
+    #1b494b
+  );
 }
 body .main .content .contentLower .myCard.Normal {
-  background: linear-gradient(to right, rgb(230, 216, 15) 4%, #1b494b 4%, #1b494b);
+  background: linear-gradient(
+    to right,
+    rgb(230, 216, 15) 4%,
+    #1b494b 4%,
+    #1b494b
+  );
   /* background: linear-gradient(to left, 
   $main-color 70%, 
   rgb(230, 216, 15)); */
 }
 body .main .content .contentLower .myCard.High {
-  background: linear-gradient(to right, rgb(202, 31, 31) 4%, #1b494b 4%, #1b494b 100%);
+  background: linear-gradient(
+    to right,
+    rgb(202, 31, 31) 4%,
+    #1b494b 4%,
+    #1b494b 100%
+  );
 }
 body .main .content .contentLower .myCard {
   max-height: 150px;
@@ -399,4 +416,4 @@ body .form.visible {
     align-items: center;
     width: 45%;
   }
-}/*# sourceMappingURL=style.css.map */
+} /*# sourceMappingURL=style.css.map */

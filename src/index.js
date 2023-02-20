@@ -29,8 +29,8 @@ makeFormHTML();
 const addProjectBtn = document.querySelector(".addProject");
 
 addProjectBtn.addEventListener("click", () => {
-    makeFormType("project");
-    toggleShowingForm("show");
+  makeFormType("project");
+  toggleShowingForm("show");
 });
 
 // Make tabbed browsing functionality
@@ -40,6 +40,3 @@ callShowingFunc();
 
 // Add menu button when using phone screen
 addMenuBtn();
-
-
-

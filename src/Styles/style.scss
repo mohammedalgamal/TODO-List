@@ -1,8 +1,8 @@
 @import "./config";
 
 @font-face {
-    font-family: 'logo-font';
-    src: url("../Fonts/SunnySpellsBasicRegular-Yz1Wv.ttf");
+  font-family: "logo-font";
+  src: url("../Fonts/SunnySpellsBasicRegular-Yz1Wv.ttf");
 }
 
 @keyframes fadeIn {
@@ -15,444 +15,449 @@
 }
 
 body {
-    background-color: $third-color;
-    min-width: 100vw;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+  background-color: $third-color;
+  min-width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 
-    button, input[type="submit"], input[type="reset"] {
-      background: none;
-      color: inherit;
-      border: none;
-      padding: 0;
-      font: inherit;
-      cursor: pointer;
-      outline: inherit;
+  button,
+  input[type="submit"],
+  input[type="reset"] {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
   }
 
-    .header {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        padding: 12px 20px;
-        background-color: $main-color;
-        color: white;
-        gap: 12px;
-        z-index: 2;
-        font-size: calc(1.8vw + 1.8vh);
-        font-family: logo-font;
+  .header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 12px 20px;
+    background-color: $main-color;
+    color: white;
+    gap: 12px;
+    z-index: 2;
+    font-size: calc(1.8vw + 1.8vh);
+    font-family: logo-font;
 
-        .showMore {
-          position: absolute;
-          right: 0.4rem;
-          width: 50px;
-          height: 50px;
+    .showMore {
+      position: absolute;
+      right: 0.4rem;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        width: 25px;
+        height: auto;
+      }
+    }
+
+    .active {
+      background-color: #0c2021;
+      border-radius: 8px;
+    }
+
+    .showMore.hideLandscape {
+      display: none;
+    }
+  }
+
+  .main {
+    min-width: 100vw;
+    min-height: calc(100vh - (124px + 5vh));
+    display: flex;
+
+    .navBar {
+      width: 16vw;
+      min-height: calc(100vh - (124px + 5vh));
+      background-color: #99aa92;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding: 48px 16px;
+      z-index: 1;
+
+      .item {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 8px 16px;
+      }
+
+      img {
+        width: calc(1.1vw + 1.1vh);
+        height: auto;
+      }
+
+      .tasks,
+      .projects {
+        display: flex;
+        flex-direction: column;
+
+        .tasksUpper,
+        .projectsUpper {
+          font-weight: 500;
+          margin-bottom: 14px;
+          font-size: calc(0.9vw + 0.9vh);
+          @media screen and (orientation: portrait) {
+            font-size: calc((1vw + 1vh));
+            margin-bottom: 4px;
+          }
+        }
+
+        .tasksLower,
+        .projectsLower {
+          display: flex;
+          flex-direction: column;
+          font-weight: 300;
+          font-size: calc(0.8 * (1vw + 1vh));
+          @media screen and (orientation: portrait) {
+            font-size: calc((1vw + 1vh));
+          }
+
+          .item:hover,
+          .item.active {
+            background-color: #71816a;
+            border-radius: 8px;
+          }
+        }
+
+        .removeProject {
+          z-index: 3;
+          margin-left: auto;
+          border-radius: 8px;
+          padding: 2.5px;
+          width: calc(1vw + 1vh + 5px);
+          height: calc(1vw + 1vh + 5px);
           display: flex;
           align-items: center;
           justify-content: center;
 
           img {
-            width: 25px;
+            margin: 0;
+            width: calc(1vw + 1vh);
+            height: calc(1vw + 1vh);
+          }
+        }
+        .removeProject:hover {
+          background-color: #a22020;
+        }
+      }
+    }
+
+    .content {
+      width: 84vw;
+      min-height: calc(100vh - (124px + 5vh));
+      // z-index: -2;
+      display: flex;
+      flex-direction: column;
+      padding: 24px;
+
+      .contentUpper {
+        width: 100%;
+        height: fit-content;
+        font-size: clamp(20px, 26px, 32px);
+        font-weight: 500;
+        display: flex;
+        flex-direction: column;
+
+        .nameDiv,
+        .addTask {
+          padding-left: 16px;
+        }
+
+        .addTask {
+          font-size: clamp(15px, 19.5px, 24px);
+          font-weight: 200;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          width: 30%;
+
+          img {
+            width: clamp(15px, 19.5px, 24px);
             height: auto;
           }
         }
 
-        .active {
-          background-color: #0c2021;
-          border-radius: 8px;
+        .addTask:hover {
+          background-color: #687762;
+          border-radius: 10px;
+        }
+      }
+
+      .contentLower {
+        width: 100%;
+        min-height: 95%;
+        padding: 24px;
+        display: grid;
+        justify-content: center;
+        gap: 15px;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 0.65fr));
+
+        .myCard.Low {
+          background: linear-gradient(
+            to right,
+            rgb(14, 196, 26) 4%,
+            $main-color 4%,
+            $main-color
+          );
         }
 
-        .showMore.hideLandscape {
-          display: none;
-        }
-    }
+        .myCard.Normal {
+          background: linear-gradient(
+            to right,
+            rgb(230, 216, 15) 4%,
+            $main-color 4%,
+            $main-color
+          );
 
-    .main {
-        min-width: 100vw;
-        min-height: calc(100vh - (124px + 5vh));
-        display: flex;
-
-        .navBar {
-            width: 16vw;
-            min-height: calc(100vh - (124px + 5vh));
-            background-color: #99aa92;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            padding: 48px 16px;
-            z-index: 1;
-
-            .item {
-              display: flex;
-              align-items: center;
-              gap: 16px;
-              padding: 8px 16px;
-            }
-
-            img {
-              width: calc(1.1vw + 1.1vh);
-              height: auto;
-            }
-          
-            .tasks,
-            .projects {
-              display: flex;
-              flex-direction: column;
-              
-              .tasksUpper,
-              .projectsUpper {
-                font-weight: 500;
-                margin-bottom: 14px;
-                font-size: calc(0.9vw + 0.9vh);
-                @media screen and (orientation:portrait) {
-                  font-size: calc((1vw + 1vh));
-                  margin-bottom: 4px;
-                }
-              }
-
-              .tasksLower,
-              .projectsLower {
-                display: flex;
-                flex-direction: column;
-                font-weight: 300;
-                font-size: calc(0.8 * (1vw + 1vh));
-                @media screen and (orientation:portrait) {
-                  font-size: calc((1vw + 1vh));
-                }
-
-                .item:hover,
-                .item.active {
-                  background-color: #71816a;
-                  border-radius: 8px;
-                }
-              }
-
-              .removeProject {
-                z-index: 3;
-                margin-left: auto;
-                border-radius: 8px;
-                padding: 2.5px;
-                width: calc(1vw + 1vh + 5px);
-                height: calc(1vw + 1vh + 5px);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-
-                img {
-                  margin: 0;
-                  width: calc(1vw + 1vh);
-                  height: calc(1vw + 1vh);
-                }
-              }
-              .removeProject:hover {
-                background-color: #a22020;
-              }
-          }
-        }
-
-        .content {
-          width: 84vw;
-          min-height: calc(100vh - (124px + 5vh)); 
-          // z-index: -2;
-          display: flex;
-          flex-direction: column;
-          padding: 24px;
-
-          .contentUpper {
-            width: 100%;
-            height: fit-content;
-            font-size: clamp(20px, 26px, 32px);
-            font-weight: 500;
-            display: flex;
-            flex-direction: column;
-
-
-            .nameDiv,
-            .addTask {
-              padding-left: 16px;
-            }
-
-            .addTask {
-              font-size: clamp(15px, 19.5px, 24px);
-              font-weight: 200;
-              display: flex;
-              align-items: center;
-              gap: 8px;
-              width: 30%;
-
-              img {
-                width: clamp(15px, 19.5px, 24px);
-                height: auto;
-              }
-            }
-
-            .addTask:hover {
-              background-color: #687762;
-              border-radius: 10px; 
-            }
-          }
-
-          .contentLower {
-            width: 100%;
-            min-height: 95%;
-            padding: 24px;
-            display: grid;
-            justify-content: center;
-            gap: 15px;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 0.65fr));
-            
-            .myCard.Low {
-              background: linear-gradient(to right,  
-              rgb(14, 196, 26) 4%, 
-              $main-color 4%, 
-              $main-color);
-            }
-
-            .myCard.Normal {
-              background: linear-gradient(to right,  
-              rgb(230, 216, 15) 4%, 
-              $main-color 4%, 
-              $main-color);
-              
-              /* background: linear-gradient(to left, 
+          /* background: linear-gradient(to left, 
               $main-color 70%, 
               rgb(230, 216, 15)); */
-            }
-
-            .myCard.High {
-              background: linear-gradient(to right, 
-              rgb(202, 31, 31) 4%, 
-              $main-color 4%, 
-              $main-color 100%);
-            }
-
-            .myCard {
-                max-height: 150px;
-                border-radius: 10px;
-                display: flex;
-                flex-direction: column;
-                padding: 12px;
-                gap: 12px;
-                z-index: 1;
-                color: white;
-                
-                div {
-                    align-self: center;
-                }
-
-                .titleDiv {
-                  font-weight: 600;
-                }
-
-                .dateDiv {
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                  width: 100%;
-                }
-
-                .edit {
-                  background-color: #be7912;
-                }
-
-                .remove {
-                  background-color: #a22020;
-                }
-        
-                .myBtns {
-                  width: 100%;
-                  display: flex;
-                  justify-content: space-evenly;
-                }
-
-                button {
-                    border-radius: 8px;
-                    width: 5rem;
-                    height: 3rem;
-                    font-weight: 300;
-                    text-align: center;
-                }
-        
-                button:hover {
-                    filter: brightness(85%);
-                }
-            }
         }
+
+        .myCard.High {
+          background: linear-gradient(
+            to right,
+            rgb(202, 31, 31) 4%,
+            $main-color 4%,
+            $main-color 100%
+          );
+        }
+
+        .myCard {
+          max-height: 150px;
+          border-radius: 10px;
+          display: flex;
+          flex-direction: column;
+          padding: 12px;
+          gap: 12px;
+          z-index: 1;
+          color: white;
+
+          div {
+            align-self: center;
+          }
+
+          .titleDiv {
+            font-weight: 600;
+          }
+
+          .dateDiv {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+          }
+
+          .edit {
+            background-color: #be7912;
+          }
+
+          .remove {
+            background-color: #a22020;
+          }
+
+          .myBtns {
+            width: 100%;
+            display: flex;
+            justify-content: space-evenly;
+          }
+
+          button {
+            border-radius: 8px;
+            width: 5rem;
+            height: 3rem;
+            font-weight: 300;
+            text-align: center;
+          }
+
+          button:hover {
+            filter: brightness(85%);
+          }
+        }
+      }
     }
   }
 
-    .footer {
-        width: 100vw;
-        height: 5vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-top: auto;
-        background-color: $main-color;
-        z-index: 2;
-    
-        .text {
-          color: white;
-          font-size: calc(0.8vw + 0.8vh);
-          font-weight: 200;
-    
-          @media (max-width: 333px) {
-            font-size: 15px;
-          }
-    
-          a {
-            img {
-              height: calc(0.9vw + 0.9vh);
-              margin-bottom: 5px;
-              margin-left: 8px;
-              width: auto;
-            }
-    
-            img:hover {
-              transform: scale(1.2);
-            }
-          }
-        }
-    }
+  .footer {
+    width: 100vw;
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: auto;
+    background-color: $main-color;
+    z-index: 2;
 
-    .bgForm.visible {
-      position: fixed;
-      z-index: 2;
-      width: 100vw;
-      height: 100vh;
-      background-color: rgba(0, 0, 0, 0.5);
+    .text {
+      color: white;
+      font-size: calc(0.8vw + 0.8vh);
+      font-weight: 200;
+
+      @media (max-width: 333px) {
+        font-size: 15px;
+      }
+
+      a {
+        img {
+          height: calc(0.9vw + 0.9vh);
+          margin-bottom: 5px;
+          margin-left: 8px;
+          width: auto;
+        }
+
+        img:hover {
+          transform: scale(1.2);
+        }
+      }
+    }
+  }
+
+  .bgForm.visible {
+    position: fixed;
+    z-index: 2;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
   }
 
   .form {
-      position: fixed;
-      left: 50%;
-      top: 50%;
-      z-index: 3;
-      max-width: 400px;
-      min-width: 300px;
-      max-height: 450px;
-      min-height: 180px;
-      background-color: rgb(76, 89, 81);
-      text-align: center;
-      padding: 15px;
-      color: white;
-      border-radius: 8px;
-      transform: translate(-50%, -50%) scale(0);
-      transition: 0.2s ease-in-out;
-      
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    z-index: 3;
+    max-width: 400px;
+    min-width: 300px;
+    max-height: 450px;
+    min-height: 180px;
+    background-color: rgb(76, 89, 81);
+    text-align: center;
+    padding: 15px;
+    color: white;
+    border-radius: 8px;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 0.2s ease-in-out;
 
-      form {
-          display: flex;
-          flex-direction: column;
-          gap: 20px;
-          align-items: stretch;
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: stretch;
+    }
+
+    .title {
+      font-weight: 700;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .form-control:focus {
+      box-shadow: 0 0 0 0.25rem rgba(13, 253, 113, 0.25);
+      border-color: rgba(13, 253, 113, 0.25);
+    }
+
+    #date {
+      width: 70%;
+    }
+
+    #Details {
+      resize: vertical;
+      max-height: 150px;
+    }
+
+    .date {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .priority {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      button {
+        font-weight: 700;
       }
 
-      .title {
-          font-weight: 700;
+      button:hover,
+      button.active {
+        color: white;
       }
+    }
 
-      .form-group {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-      }
-
-      .form-control:focus {
-        box-shadow: 0 0 0 0.25rem rgba(13, 253, 113, 0.25);
-        border-color: rgba(13, 253, 113, 0.25);
-      }
-
-      #date {
-        width: 70%;
-      }
-
-      #Details {
-        resize: vertical; 
-        max-height: 150px;
-      }
-
-      .date {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .priority {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        button {
-          font-weight: 700;
-        }
-
-        button:hover,
-        button.active {
-          color: white;
-        }
-      }
-
-      .submit-btn {
-          width: 100%;
-          background-color: rgb(23, 107, 30);
-          border-color: rgb(23, 107, 30);
-      }
+    .submit-btn {
+      width: 100%;
+      background-color: rgb(23, 107, 30);
+      border-color: rgb(23, 107, 30);
+    }
   }
 
   .form.visible {
-      transform: translate(-50%, -50%) scale(1);
+    transform: translate(-50%, -50%) scale(1);
   }
 
-    @media screen and (orientation:portrait) {
-      
-      .header {
-          justify-content: center;
-          font-size: xx-large;
-          gap: 6px;
+  @media screen and (orientation: portrait) {
+    .header {
+      justify-content: center;
+      font-size: xx-large;
+      gap: 6px;
 
-          .showMore.hideLandscape {
-            display: flex;
-          }
-      }
-
-      .main {
-        flex-direction: column;
-          .navBar {
-              width: 100%;
-              min-height: 8rem;
-              padding: 28px 16px;
-              flex-direction: row;
-              gap: 26px;
-              justify-content: space-evenly;
-              display: none;
-          }
-
-          .navBar.show {
-            display: flex;
-          }
-
-          .content {
-            width: 100vw;
-
-            .contentUpper {
-              display: flex;
-              justify-content: center;
-              align-items: center;
-
-              .nameDiv,
-              .addTask {
-                padding-left: 0;
-              }
-
-              .addTask {
-                justify-content: center;
-                align-items: center;
-                width: 45%;
-              }
-            }
-          }
+      .showMore.hideLandscape {
+        display: flex;
       }
     }
+
+    .main {
+      flex-direction: column;
+      .navBar {
+        width: 100%;
+        min-height: 8rem;
+        padding: 28px 16px;
+        flex-direction: row;
+        gap: 26px;
+        justify-content: space-evenly;
+        display: none;
+      }
+
+      .navBar.show {
+        display: flex;
+      }
+
+      .content {
+        width: 100vw;
+
+        .contentUpper {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          .nameDiv,
+          .addTask {
+            padding-left: 0;
+          }
+
+          .addTask {
+            justify-content: center;
+            align-items: center;
+            width: 45%;
+          }
+        }
+      }
+    }
+  }
 }

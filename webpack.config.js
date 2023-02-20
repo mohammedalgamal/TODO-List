@@ -7,7 +7,7 @@ module.exports = {
   entry: {
     index: "./src/index.js",
     header: "./src/header.js",
-    footer: "./src/footer.js"
+    footer: "./src/footer.js",
   },
   plugins: [
     new HtmlWebpackPlugin({
