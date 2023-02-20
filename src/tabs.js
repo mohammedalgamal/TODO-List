@@ -113,7 +113,7 @@ export function showProjectTasks(project) {
     const allProjects = restoreLocal();
     let currentProjectTasks;
     for (let i = 0; i < allProjects.length; i++) {
-        if (allProjects[i].name === project.innerText) {
+        if (allProjects[i].name === project.dataset.name) {
             currentProjectTasks = allProjects[i].getTasks();
             break;
         };
