@@ -40,12 +40,28 @@ export default function makeFormType(type, label = "") {
 
         const projectName = document.createElement("input");
         projectName.type = "text";
-        projectName.classList = "form-control";
+        projectName.classList = "form-control projectNameInput";
         projectName.placeholder = "Project name";
         projectName.name = "name";
         projectName.id = "name";
+        projectName.pattern = "^[^\\s]+(\\s+[^\\s]+)*$";
         projectName.required = true;
         projectName.autofocus = true;
+
+        projectName.addEventListener("input", () => {
+            if (projectName.validity.patternMismatch) {
+                projectName.setCustomValidity("Project names can't start or end with spaces");
+            } else {
+                projectName.setCustomValidity("");
+            };
+            const currentStorage = restoreLocal();
+
+            for (let i = 0; i < currentStorage.length; i++) {
+                if (projectName.value === currentStorage[i].name) {
+                    projectName.setCustomValidity(`Project ${projectName.value} already exists!`);
+                };
+            };
+        });
 
         nameFormGroup.appendChild(projectName);
 
@@ -71,6 +87,7 @@ export default function makeFormType(type, label = "") {
         const value = new Date().toJSON().slice(0, 10).replace(/-/g, "-");
 
         nameFormGroup.appendChild(taskName);
+
         nameFormGroup.innerHTML +=
             `
         <div class="date">
