@@ -113,7 +113,7 @@ export function getFormData() {
         const name = document.querySelector("#name").value;
         const date = document.querySelector("#date").value;
         const priority = document.querySelector(".priority .active").innerHTML;
-        let project = document.querySelector(".contentUpper .nameDiv").innerHTML;
+        let project = document.querySelector(".contentUpper .nameDiv").innerText;
         if (project === "All tasks") {
             project = "Default";
         };
@@ -141,7 +141,7 @@ export function getFormData() {
         const name = document.querySelector("#name").value;
         const date = document.querySelector("#date").value;
         const priority = document.querySelector(".priority .active").innerHTML;
-        let project = document.querySelector(".contentUpper .nameDiv").innerHTML;
+        let project = document.querySelector(".contentUpper .nameDiv").innerText;
         if (project === "All tasks" || project === "Toady's tasks" || project === "This week's tasks") {
             const projectTitle = document.querySelector(".formTitle").innerHTML;
             project = projectTitle
